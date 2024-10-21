@@ -45,14 +45,16 @@ with st.sidebar:
   input_df = pd.DataFrame(data, index=[0])
   input_penguins = pd.concat([input_df, X], axis=0)
 
+  #Encode 
+  enconde = ['island', 'sex']
+  df_penguins = pd.get_dummies(input_penguins, prefix=enconde)
+  input_row = df_penguins[:1]
+
 with st.expander('Input Features'):
   st.write('**Input Penguin**')
   input_df
   st.write('**Combined penguins data**')
   input_penguins
-
-#Encode 
-enconde = ['island', 'sex']
-df_penguins = pd.get_dummies(input_penguins, prefix=enconde)
-df_penguins
+  st.write('Encoded input penguin')
+  input_row
 
